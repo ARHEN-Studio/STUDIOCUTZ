@@ -4,496 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>STUDIO CUTZ</title>
-    <!-- Chargement de Tailwind CSS pour le design -->
+    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chargement des icônes -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Animations et styles personnalisés */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="flex justify-center bg-zinc-100 min-h-screen font-sans">
 
-    <!-- Écran de l'application -->
     <div class="w-full max-w-md bg-zinc-950 h-screen flex flex-col relative shadow-2xl overflow-hidden text-zinc-900">
         
-        <!-- EN-TÊTE -->
-        <header id="main-header" class="absolute top-0 w-full z-30 flex justify-between items-center px-6 transition-all duration-500 bg-white/80 backdrop-blur-md py-4">
+        <!-- EN-TÊTE FIXE -->
+        <header id="main-header" class="absolute top-0 w-full z-30 flex flex-col px-6 transition-all duration-500 bg-white/80 backdrop-blur-md pt-5 pb-3">
             <div id="header-border" class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent transition-opacity duration-500 opacity-100 z-0"></div>
-            <h1 id="header-title" class="relative z-10 text-2xl font-black tracking-tighter uppercase transform scale-y-110 origin-left transition-colors duration-500 text-zinc-900">
-                STUDIO CUTZ.
-            </h1>
-            <a href="https://www.planity.com/studio-cutz-83300-draguignan" target="_blank" id="header-btn" class="relative z-10 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md transition-all duration-500 bg-black text-white hover:bg-zinc-800">
-                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                RDV
-            </a>
+            
+            <div class="flex justify-between items-center w-full mb-4">
+                <h1 id="header-title" class="relative z-10 text-2xl font-black tracking-tighter uppercase transform scale-y-110 origin-left transition-colors duration-500 text-zinc-900">
+                    STUDIO CUTZ.
+                </h1>
+                <a href="https://www.planity.com/studio-cutz-83300-draguignan" target="_blank" id="header-btn" class="relative z-10 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md transition-all duration-500 bg-black text-white hover:bg-zinc-800">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                    RDV
+                </a>
+            </div>
+
+            <!-- NAVIGATION HAUTE (SEGMENTED) -->
+            <nav id="top-nav" class="relative z-10 flex bg-zinc-200/50 backdrop-blur-sm p-1 rounded-xl items-center border border-white/20">
+                <button id="nav-salon" onclick="switchTab('salon')" class="nav-btn flex-1 py-2 px-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-300 bg-black text-white shadow-lg">
+                    Le Salon
+                </button>
+                <button id="nav-tarifs" onclick="switchTab('tarifs')" class="nav-btn flex-1 py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all duration-300 text-zinc-500 hover:text-zinc-800">
+                    Tarifs
+                </button>
+                <button id="nav-artistes" onclick="switchTab('artistes')" class="nav-btn flex-1 py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all duration-300 text-zinc-500 hover:text-zinc-800">
+                    Artistes
+                </button>
+            </nav>
         </header>
 
-        <!-- CONTENU PRINCIPAL -->
-        <main id="main-content" class="flex-1 overflow-y-auto hide-scrollbar pt-[72px] pb-[85px] transition-colors duration-500 bg-white">
+        <!-- CONTENU -->
+        <main id="main-content" class="flex-1 overflow-y-auto hide-scrollbar pt-[118px] pb-8 transition-colors duration-500 bg-white">
             
             <!-- ONGLET 1 : LE SALON -->
             <div id="tab-salon" class="animate-fade-in pb-8 bg-white">
-                <div class="w-full h-[45vh] bg-zinc-200 relative -mt-[72px]">
-                    <img src="Salon.PNG" alt="Intérieur de STUDIO CUTZ." class="w-full h-full object-cover" />
+                <div class="w-full h-[45vh] bg-zinc-200 relative -mt-[118px]">
+                    <img src="Salon.PNG" alt="Salon" class="w-full h-full object-cover" />
                     <div class="absolute inset-0 bg-black/10"></div>
-                    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
                 </div>
-
-                <div class="bg-white relative z-10 px-6 pb-6 -mt-2 space-y-8">
+                <div class="bg-white px-6 py-8 space-y-8">
                     <div class="space-y-2">
-                        <h2 class="text-3xl font-black tracking-tight uppercase">Bienvenue au Studio.</h2>
-                        <p class="text-zinc-500 font-light leading-relaxed">
-                            Plus qu'un simple passage sur le fauteuil, on redéfinit l'art de la coupe. Précision chirurgicale, fades à blanc parfaits et taille de barbe sur-mesure dans une ambiance décontractée. Détends-toi, ton style est entre les mains d'experts.
-                        </p>
+                        <h2 class="text-3xl font-black uppercase">Bienvenue au Studio.</h2>
+                        <p class="text-zinc-500 font-light leading-relaxed">Précision chirurgicale et ambiance exclusive.</p>
                     </div>
-
-                    <a href="https://www.planity.com/studio-cutz-83300-draguignan" target="_blank" class="w-full bg-black text-white flex items-center justify-between p-4 rounded-2xl shadow-xl hover:scale-[1.02] transition-transform active:scale-95 cursor-pointer block">
-                        <span class="font-bold tracking-wide text-lg ml-2">Prendre Rendez-vous</span>
+                    <a href="https://www.planity.com/studio-cutz-83300-draguignan" target="_blank" class="w-full bg-black text-white flex items-center justify-between p-4 rounded-2xl shadow-xl active:scale-95 transition-transform">
+                        <span class="font-bold text-lg ml-2">Prendre Rendez-vous</span>
                         <div class="bg-white/20 p-2 rounded-full"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
                     </a>
-
-                    <div class="space-y-4">
-                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-100">
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-black text-white p-3 rounded-xl flex-shrink-0 shadow-md">
-                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-bold text-lg">Nous trouver</h4>
-                                    
-                                    <div class="flex items-start justify-between gap-3 mt-1 mb-4 bg-white p-2.5 rounded-xl border border-zinc-100 shadow-sm">
-                                        <p class="text-zinc-600 text-sm leading-snug font-medium flex-1">
-                                            15 Rue des Endronnes, Draguignan
-                                        </p>
-                                        <button onclick="copyAddress()" id="copy-btn" class="flex-shrink-0 p-2 bg-zinc-100 rounded-lg text-zinc-500 hover:text-black hover:bg-zinc-200 transition-colors" title="Copier l'adresse">
-                                            <div id="copy-icon"><i data-lucide="copy" class="w-4 h-4"></i></div>
-                                        </button>
-                                    </div>
-
-                                    <a href="https://maps.google.com/?q=15+Rue+des+Endronnes,+Draguignan" target="_blank" class="inline-block text-sm font-bold border-b-2 border-black pb-0.5 hover:text-zinc-600 hover:border-zinc-600 transition-colors">
-                                        Ouvrir dans Maps
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-100 flex items-center space-x-4">
-                            <div class="bg-black text-white p-3 rounded-xl flex-shrink-0 shadow-md">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg">Nous contacter</h4>
-                                <a href="tel:+33698284524" class="text-zinc-600 text-sm font-medium mt-0.5 block hover:text-black transition-colors">06 98 28 45 24</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-100 flex items-start space-x-4">
-                            <div class="bg-black text-white p-3 rounded-xl flex-shrink-0 shadow-md">
-                                <i data-lucide="clock" class="w-6 h-6"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-lg leading-tight mb-3">Horaires d'ouverture</h4>
-                                <div class="bg-white rounded-xl border border-zinc-100 shadow-sm divide-y divide-zinc-100 overflow-hidden">
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Lundi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Mardi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Mercredi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Jeudi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Vendredi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Samedi</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                    <div class="flex items-center justify-between p-3 bg-zinc-50"><span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Dimanche</span><span class="text-sm font-black text-zinc-900">10h00 - 19h00</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center bg-zinc-50 p-5 rounded-2xl border border-zinc-100">
-                            <div>
-                                <h4 class="font-bold text-lg">Nos Réseaux</h4>
-                                <p class="text-zinc-500 text-sm mt-1">Rejoignez la communauté</p>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="https://www.instagram.com/studiocutz._?igsh=ZnY4NXk4ZTU0dGdv" target="_blank" class="p-3 bg-white text-zinc-900 shadow-sm border border-zinc-100 rounded-xl hover:scale-105 hover:bg-zinc-50 transition-all flex items-center justify-center">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                </a>
-                                <a href="https://www.tiktok.com/@studiocutz_?_r=1&_t=ZN-95VCDzO8Nio" target="_blank" class="p-3 bg-white text-zinc-900 shadow-sm border border-zinc-100 rounded-xl hover:scale-105 hover:bg-zinc-50 transition-all flex items-center justify-center">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- ONGLET 2 : TARIFS -->
             <div id="tab-tarifs" class="animate-fade-in min-h-full bg-white p-6 hidden">
                 <h2 class="text-3xl font-black mb-6 tracking-tight">TARIFS.</h2>
-                <div class="space-y-6">
-                    
-                    <!-- Catégorie: Coupe -->
-                    <div class="bg-white border border-zinc-100 shadow-sm rounded-2xl overflow-hidden">
-                        <div class="flex justify-between items-center p-5 bg-black border-b border-black">
-                            <h3 class="text-base font-bold text-white tracking-wide">Coupe</h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
+                <div class="space-y-4">
+                    <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-100 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold">Coupe Homme Classique</h4>
+                            <p class="text-xs text-zinc-500">Shampooing inclus</p>
                         </div>
-                        <div class="p-5">
-                            <div>
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Coupe Homme Classique</h4>
-                                <p class="text-[13px] text-zinc-500 mb-3">Le Shampooing et le Coiffage inclus dans le forfait</p>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">20 €</span>
-                                        <span class="text-zinc-300 text-xs">•</span>
-                                        <span class="text-zinc-500 text-sm">30min</span>
-                                    </div>
-                            </div>
-                        </div>
+                        <span class="font-black">20 €</span>
                     </div>
-
-                    <!-- Catégorie: Forfaits -->
-                    <div class="bg-white border border-zinc-100 shadow-sm rounded-2xl overflow-hidden">
-                        <div class="flex justify-between items-center p-5 bg-black border-b border-black">
-                            <h3 class="text-base font-bold text-white tracking-wide">Forfaits</h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
+                    <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-100 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold">Coupe + Barbe</h4>
+                            <p class="text-xs text-zinc-500">Le forfait complet</p>
                         </div>
-                        <div class="p-5 space-y-6">
-                            <div class="border-b border-zinc-100 pb-6">
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Coupe + Barbe</h4>
-                                <p class="text-[13px] text-zinc-500 mb-3">Le Shampooing et le Coiffage inclus dans le forfait</p>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">25 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">45min</span>
-                                    </div>
-                            </div>
-                            <div class="border-b border-zinc-100 pb-6">
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Coupe + Barbe + Soin complet</h4>
-                                <p class="text-[13px] text-zinc-500 mb-3">Le Shampooing et le Coiffage inclus dans le forfait</p>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">50 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">1h</span>
-                                    </div>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Coupe + Barbe + Soin complet + Épilation</h4>
-                                <p class="text-[13px] text-zinc-500 mb-3">Le Shampooing et le Coiffage inclus dans le forfait</p>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">55 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">1h</span>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Catégorie: Soins et entretien -->
-                    <div class="bg-white border border-zinc-100 shadow-sm rounded-2xl overflow-hidden">
-                        <div class="flex justify-between items-center p-5 bg-black border-b border-black">
-                            <h3 class="text-base font-bold text-white tracking-wide">Soins et entretien</h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
-                        </div>
-                        <div class="p-5 space-y-6">
-                            <div class="border-b border-zinc-100 pb-6">
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Soin du visage Simple</h4>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">10 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">10min</span>
-                                    </div>
-                            </div>
-                            <div class="border-b border-zinc-100 pb-6">
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Soin du visage Complet</h4>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">30 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">20min</span>
-                                    </div>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">Épilation</h4>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">5 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">10min</span>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Catégorie: Prestation VIP -->
-                    <div class="bg-white border border-zinc-100 shadow-sm rounded-2xl overflow-hidden">
-                        <div class="flex justify-between items-center p-5 bg-black border-b border-black">
-                            <h3 class="text-base font-bold text-white tracking-wide">Prestation VIP</h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-sm text-zinc-500 mb-5 leading-relaxed">Retrouvez nous après les horaires d'ouverture pour les occasions spéciale.</p>
-                            <div class="space-y-6">
-                                <div class="border-b border-zinc-100 pb-6">
-                                    <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">VIP : Coupe</h4>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">40 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">30min</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-zinc-800 text-[15px] mb-1">VIP : Coupe et Barbe</h4>
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-bold text-base">50 €</span><span class="text-zinc-300 text-xs">•</span><span class="text-zinc-500 text-sm">30min</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <span class="font-black">25 €</span>
                     </div>
                 </div>
             </div>
 
             <!-- ONGLET 3 : ARTISTES -->
             <div id="tab-artistes" class="hidden flex-col min-h-screen text-white bg-zinc-950 pb-8">
-                
-                <!-- ARTISTE 0: SONNY -->
                 <div id="artist-0" class="artist-view animate-fade-in">
-                    <div class="relative w-full h-[calc(100vh-85px)] -mt-[72px] flex-shrink-0">
-                        <img src="ProfilSonnyFirmino.PNG" alt="SONNY FIRMINO" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-black/20"></div>
-                        <button onclick="prevArtist()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-left" class="w-7 h-7"></i></button>
-                        <button onclick="nextArtist()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-right" class="w-7 h-7"></i></button>
-                        <div class="absolute bottom-8 w-full px-8 text-center z-10 flex flex-col items-center">
-                            <span class="inline-block px-4 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-full mb-4 shadow-lg">Master Barber</span>
-                            <h2 class="text-4xl font-black tracking-tighter mb-3 leading-none drop-shadow-md">SONNY FIRMINO</h2>
-                            <p class="text-sm text-zinc-300 leading-relaxed font-light mb-6 max-w-[280px] drop-shadow-sm">Spécialiste des coupes texturées et du design sur mesure.</p>
-                            <div class="flex justify-center space-x-4 mb-6">
-                                <a href="https://www.instagram.com/sonnyfirmino?igsh=MTNkbjVyaGJqY29teg==" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                </a>
-                                <a href="https://www.tiktok.com/@sonnyfirmino?_r=1&_t=ZN-95VBviTx9FO" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-2xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                                </a>
-                            </div>
-                            <div class="flex flex-col items-center animate-bounce text-zinc-400 mt-2"><span class="text-[9px] uppercase tracking-[0.2em] font-bold mb-1">Portfolio</span><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-                    <div class="px-6 mt-8">
-                        <h3 class="text-xl font-black tracking-tight mb-6 flex items-center gap-3">RÉALISATIONS <div class="h-[1px] flex-1 bg-zinc-800"></div></h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg col-span-2 aspect-[16/9]"><img src="PortfolioSonny.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="PortfolioSonny2.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="PortfolioSonny3.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg col-span-2 aspect-[16/9]"><img src="PortfolioSonny4.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
+                    <div class="relative w-full h-[calc(100vh-120px)] -mt-[118px]">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale" />
+                        <div class="absolute bottom-12 w-full text-center px-8">
+                            <span class="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-full">MASTER BARBER</span>
+                            <h2 class="text-4xl font-black mt-2">SONNY FIRMINO</h2>
                         </div>
                     </div>
                 </div>
-
-                <!-- ARTISTE 1: EZ BARBER -->
-                <div id="artist-1" class="artist-view hidden animate-fade-in">
-                    <div class="relative w-full h-[calc(100vh-85px)] -mt-[72px] flex-shrink-0">
-                        <img src="EZBarberprofil.PNG" alt="EZ BARBER" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-black/20"></div>
-                        <button onclick="prevArtist()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-left" class="w-7 h-7"></i></button>
-                        <button onclick="nextArtist()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-right" class="w-7 h-7"></i></button>
-                        <div class="absolute bottom-8 w-full px-8 text-center z-10 flex flex-col items-center">
-                            <span class="inline-block px-4 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-full mb-4 shadow-lg">Expert Fade</span>
-                            <h2 class="text-4xl font-black tracking-tighter mb-3 leading-none drop-shadow-md">EZ BARBER</h2>
-                            <p class="text-sm text-zinc-300 leading-relaxed font-light mb-6 max-w-[280px] drop-shadow-sm">Précision chirurgicale. Le roi du dégradé à blanc.</p>
-                            <div class="flex justify-center space-x-4 mb-6">
-                                <a href="https://www.instagram.com/essan_azib83?igsh=NTQ5ODR0M3M2ajkx" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                </a>
-                                <a href="https://www.tiktok.com/@essan_azib?_r=1&_t=ZN-95VC112xjON" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-2xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                                </a>
-                            </div>
-                            <div class="flex flex-col items-center animate-bounce text-zinc-400 mt-2"><span class="text-[9px] uppercase tracking-[0.2em] font-bold mb-1">Portfolio</span><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-                    <div class="px-6 mt-8">
-                        <h3 class="text-xl font-black tracking-tight mb-6 flex items-center gap-3">RÉALISATIONS <div class="h-[1px] flex-1 bg-zinc-800"></div></h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg col-span-2 aspect-[16/9]"><img src="PortfolioEZ.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="PortfolioEZ2.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="PortfolioEZ3.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ARTISTE 2: OMAR -->
-                <div id="artist-2" class="artist-view hidden animate-fade-in">
-                    <div class="relative w-full h-[calc(100vh-85px)] -mt-[72px] flex-shrink-0">
-                        <img src="PortfolioOmar.PNG" alt="OMAR" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-black/20"></div>
-                        <button onclick="prevArtist()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-left" class="w-7 h-7"></i></button>
-                        <button onclick="nextArtist()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/20 rounded-full hover:bg-white/20 transition backdrop-blur-md border border-white/10"><i data-lucide="chevron-right" class="w-7 h-7"></i></button>
-                        <div class="absolute bottom-8 w-full px-8 text-center z-10 flex flex-col items-center">
-                            <span class="inline-block px-4 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-full mb-4 shadow-lg">Expert Barbe</span>
-                            <h2 class="text-4xl font-black tracking-tighter mb-3 leading-none drop-shadow-md">OMAR</h2>
-                            <p class="text-sm text-zinc-300 leading-relaxed font-light mb-6 max-w-[280px] drop-shadow-sm">L'art du rasage traditionnel à l'ancienne et des soins VIP.</p>
-                            <div class="flex justify-center space-x-4 mb-6">
-                                <a href="https://www.instagram.com/obarber_83?igsh=aTlxb2F5NmxmNXE5" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                </a>
-                                <a href="https://www.tiktok.com/@omardinho90?_r=1&_t=ZN-95VC7z8M1wM" target="_blank" class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-md text-white border border-white/10 rounded-2xl hover:bg-white hover:text-black hover:scale-105 transition-all duration-300">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                                </a>
-                            </div>
-                            <div class="flex flex-col items-center animate-bounce text-zinc-400 mt-2"><span class="text-[9px] uppercase tracking-[0.2em] font-bold mb-1">Portfolio</span><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-                    <div class="px-6 mt-8">
-                        <h3 class="text-xl font-black tracking-tight mb-6 flex items-center gap-3">RÉALISATIONS <div class="h-[1px] flex-1 bg-zinc-800"></div></h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg col-span-2 aspect-[16/9]"><img src="PortfolioOmar.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="PortfolioOmar2.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg aspect-[4/5]"><img src="Portfolioomar3.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                            <div class="bg-zinc-900 rounded-xl overflow-hidden relative shadow-lg col-span-2 aspect-[16/9]"><img src="Portfolioomar4.PNG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 filter contrast-110"><div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors duration-300"></div></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </main>
-
-        <!-- BARRE DE NAVIGATION (BOTTOM) -->
-        <nav class="absolute bottom-0 w-full bg-white border-t border-zinc-100 pb-safe pt-2 px-8 flex justify-between items-center h-[85px] z-30">
-            <button id="nav-salon" onclick="switchTab('salon')" class="nav-btn flex flex-col items-center justify-center w-20 h-full space-y-1.5 transition-all duration-300 text-black translate-y-[-2px]">
-                <div class="icon-wrapper scale-110 drop-shadow-md transition-transform duration-300"><i data-lucide="scissors" class="w-6 h-6"></i></div>
-                <span class="text-[10px] tracking-wide font-black">Le Salon</span>
-            </button>
-            <button id="nav-tarifs" onclick="switchTab('tarifs')" class="nav-btn flex flex-col items-center justify-center w-20 h-full space-y-1.5 transition-all duration-300 text-zinc-400 hover:text-zinc-600">
-                <div class="icon-wrapper scale-100 transition-transform duration-300"><i data-lucide="menu-square" class="w-6 h-6"></i></div>
-                <span class="text-[10px] tracking-wide font-medium">Tarifs</span>
-            </button>
-            <button id="nav-artistes" onclick="switchTab('artistes')" class="nav-btn flex flex-col items-center justify-center w-20 h-full space-y-1.5 transition-all duration-300 text-zinc-400 hover:text-zinc-600">
-                <div class="icon-wrapper scale-100 transition-transform duration-300"><i data-lucide="users" class="w-6 h-6"></i></div>
-                <span class="text-[10px] tracking-wide font-medium">Artistes</span>
-            </button>
-        </nav>
     </div>
 
-    <!-- LOGIQUE JAVASCRIPT -->
     <script>
-        // Initialiser les icônes Lucide
         lucide.createIcons();
+        const tabs = ['salon', 'tarifs', 'artistes'];
+        let currentTabIdx = 0;
 
-        // 1. GESTION DES ONGLETS
         function switchTab(tabId) {
-            // Cacher tous les onglets
-            document.getElementById('tab-salon').classList.add('hidden');
-            document.getElementById('tab-salon').classList.remove('flex');
-            document.getElementById('tab-tarifs').classList.add('hidden');
-            document.getElementById('tab-artistes').classList.add('hidden');
-            document.getElementById('tab-artistes').classList.remove('flex');
-
-            // Afficher l'onglet actif
-            if(tabId === 'artistes') {
-                document.getElementById('tab-artistes').classList.remove('hidden');
-                document.getElementById('tab-artistes').classList.add('flex');
-            } else {
-                document.getElementById('tab-' + tabId).classList.remove('hidden');
-            }
-
-            // Mettre à jour l'apparence des boutons de la barre du bas
-            ['salon', 'tarifs', 'artistes'].forEach(t => {
-                const btn = document.getElementById('nav-' + t);
-                const iconWrap = btn.querySelector('.icon-wrapper');
-                const text = btn.querySelector('span');
-
-                if (t === tabId) {
-                    btn.classList.add('text-black', 'translate-y-[-2px]');
-                    btn.classList.remove('text-zinc-400', 'hover:text-zinc-600');
-                    iconWrap.classList.add('scale-110', 'drop-shadow-md');
-                    iconWrap.classList.remove('scale-100');
-                    text.classList.add('font-black');
-                    text.classList.remove('font-medium');
-                } else {
-                    btn.classList.remove('text-black', 'translate-y-[-2px]');
-                    btn.classList.add('text-zinc-400', 'hover:text-zinc-600');
-                    iconWrap.classList.remove('scale-110', 'drop-shadow-md');
-                    iconWrap.classList.add('scale-100');
-                    text.classList.remove('font-black');
-                    text.classList.add('font-medium');
-                }
+            tabs.forEach(t => {
+                document.getElementById('tab-' + t).classList.add('hidden');
+                document.getElementById('nav-' + t).className = "nav-btn flex-1 py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all duration-300 text-zinc-500 hover:text-zinc-800";
             });
 
-            // Gérer le style de l'en-tête (Transparent sur "Artistes", Blanc sur les autres)
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.remove('hidden');
+            if(tabId === 'artistes') activeTab.classList.add('flex');
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            activeBtn.className = "nav-btn flex-1 py-2 px-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-300 bg-black text-white shadow-lg";
+
+            // Style Header
             const header = document.getElementById('main-header');
-            const title = document.getElementById('header-title');
-            const btn = document.getElementById('header-btn');
             const main = document.getElementById('main-content');
-            const headerBorder = document.getElementById('header-border');
-
-            if (tabId === 'artistes') {
-                header.className = "absolute top-0 w-full z-30 flex justify-between items-center px-6 transition-all duration-500 bg-gradient-to-b from-black/80 to-transparent py-4";
-                title.className = "relative z-10 text-2xl font-black tracking-tighter uppercase transform scale-y-110 origin-left transition-colors duration-500 text-white";
-                btn.className = "relative z-10 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md transition-all duration-500 bg-white text-black hover:bg-zinc-200";
-                main.className = "flex-1 overflow-y-auto hide-scrollbar pt-[72px] pb-[85px] transition-colors duration-500 bg-zinc-950";
-                headerBorder.className = "absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent transition-opacity duration-500 opacity-0 z-0";
+            if(tabId === 'artistes') {
+                header.className = "absolute top-0 w-full z-30 flex flex-col px-6 transition-all duration-500 bg-gradient-to-b from-black/80 to-transparent pt-5 pb-3";
+                main.className = "flex-1 overflow-y-auto hide-scrollbar pt-[118px] pb-8 transition-colors duration-500 bg-zinc-950 text-white";
             } else {
-                header.className = "absolute top-0 w-full z-30 flex justify-between items-center px-6 transition-all duration-500 bg-white/80 backdrop-blur-md py-4";
-                title.className = "relative z-10 text-2xl font-black tracking-tighter uppercase transform scale-y-110 origin-left transition-colors duration-500 text-zinc-900";
-                btn.className = "relative z-10 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md transition-all duration-500 bg-black text-white hover:bg-zinc-800";
-                main.className = "flex-1 overflow-y-auto hide-scrollbar pt-[72px] pb-[85px] transition-colors duration-500 bg-white";
-                headerBorder.className = "absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent transition-opacity duration-500 opacity-100 z-0";
+                header.className = "absolute top-0 w-full z-30 flex flex-col px-6 transition-all duration-500 bg-white/80 backdrop-blur-md pt-5 pb-3";
+                main.className = "flex-1 overflow-y-auto hide-scrollbar pt-[118px] pb-8 transition-colors duration-500 bg-white text-zinc-900";
             }
-
-            // Remonte en haut de la page instantanément à chaque changement d'onglet
             main.scrollTop = 0;
+            currentTabIdx = tabs.indexOf(tabId);
         }
 
-        // 2. GESTION DU BOUTON COPIER L'ADRESSE
-        function copyAddress() {
-            const textArea = document.createElement("textarea");
-            textArea.value = "15 Rue des Endronnes, Draguignan";
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                const copyContainer = document.getElementById('copy-icon');
-                // Affiche la coche verte
-                copyContainer.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-green-600"></i>';
-                lucide.createIcons();
-                // Remet l'icône normale après 2 secondes
-                setTimeout(() => {
-                    copyContainer.innerHTML = '<i data-lucide="copy" class="w-4 h-4"></i>';
-                    lucide.createIcons();
-                }, 2000);
-            } catch (err) {
-                console.error('Erreur', err);
-            }
-            document.body.removeChild(textArea);
-        }
-
-        // 3. GESTION DU CAROUSEL DES ARTISTES
-        let currentArtistIndex = 0;
-        const totalArtists = 3;
-
-        function showArtist(index) {
-            // Cache tous les artistes
-            for(let i=0; i < totalArtists; i++) {
-                const el = document.getElementById('artist-' + i);
-                el.classList.add('hidden');
-                // Relance l'animation
-                el.classList.remove('animate-fade-in');
-            }
-            // Affiche le bon
-            const activeEl = document.getElementById('artist-' + index);
-            activeEl.classList.remove('hidden');
-            // Force le reflow pour que l'animation se joue
-            void activeEl.offsetWidth;
-            activeEl.classList.add('animate-fade-in');
-            
-            // Remonte tout en haut
-            document.getElementById('main-content').scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function nextArtist() {
-            currentArtistIndex = (currentArtistIndex + 1) % totalArtists;
-            showArtist(currentArtistIndex);
-        }
-
-        function prevArtist() {
-            currentArtistIndex = (currentArtistIndex - 1 + totalArtists) % totalArtists;
-            showArtist(currentArtistIndex);
-        }
+        // SWIPE LOGIC
+        let touchstartX = 0;
+        let touchendX = 0;
+        const mainContent = document.getElementById('main-content');
+        mainContent.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX, {passive: true});
+        mainContent.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            const threshold = 80;
+            if (touchendX < touchstartX - threshold && currentTabIdx < tabs.length - 1) switchTab(tabs[currentTabIdx + 1]);
+            else if (touchendX > touchstartX + threshold && currentTabIdx > 0) switchTab(tabs[currentTabIdx - 1]);
+        }, {passive: true});
     </script>
 </body>
 </html>
